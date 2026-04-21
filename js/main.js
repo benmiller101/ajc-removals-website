@@ -28,45 +28,55 @@ document.addEventListener('click', (e) => {
   }
 });
 
-// Nav background on scroll
-window.addEventListener('scroll', () => {
-  nav.classList.toggle('scrolled', window.scrollY > 60);
-}, { passive: true });
 
-// ── Hero video cycling (crossfade every 7 seconds) ──
-// Videos 2 and 3 start with preload="none"; we trigger loading ~2 s before each plays.
+// ── Hero video cycling ──
 const heroVideos = Array.from(document.querySelectorAll('.hero-video'));
-let currentVideoIndex = 0;
+let currentIndex = 0;
 const CYCLE_MS = 7000;
-const PRELOAD_AHEAD_MS = 2000;
+let cycleTimer = null;
 
-heroVideos.forEach((v, i) => {
-  v.addEventListener('error', () => {
-    console.error(`Hero video ${i + 1} failed to load:`, v.currentSrc || v.src);
-    v.style.display = 'none';
+function loadVideo(video) {
+  if (video && video.getAttribute('preload') === 'none') {
+    video.setAttribute('preload', 'auto');
+    video.load();
+    video.play().catch(() => {});
+  }
+}
+
+function crossfadeTo(nextIndex) {
+  heroVideos[currentIndex].classList.remove('active');
+  currentIndex = nextIndex % heroVideos.length;
+  heroVideos[currentIndex].classList.add('active');
+  loadVideo(heroVideos[(currentIndex + 1) % heroVideos.length]);
+}
+
+function startCycling() {
+  if (heroVideos.length < 2) return;
+  loadVideo(heroVideos[1]);
+  cycleTimer = setInterval(() => {
+    crossfadeTo(currentIndex + 1);
+  }, CYCLE_MS);
+}
+
+heroVideos.forEach((video, i) => {
+  video.addEventListener('error', () => {
+    console.warn(`Hero video ${i + 1} failed to load. Skipping.`);
+    video.classList.add('video-failed');
   });
 });
 
-if (heroVideos.length > 1) {
+const firstVideo = heroVideos[0];
+if (firstVideo) {
+  firstVideo.addEventListener('canplay', () => {
+    firstVideo.play().catch(() => {});
+    startCycling();
+  }, { once: true });
+
   setTimeout(() => {
-    const v = heroVideos[1];
-    if (v && v.getAttribute('preload') === 'none') {
-      v.setAttribute('preload', 'auto');
-      v.load();
+    if (cycleTimer === null && heroVideos.length > 1) {
+      startCycling();
     }
-  }, CYCLE_MS - PRELOAD_AHEAD_MS);
-
-  setInterval(() => {
-    heroVideos[currentVideoIndex].classList.remove('active');
-    currentVideoIndex = (currentVideoIndex + 1) % heroVideos.length;
-    heroVideos[currentVideoIndex].classList.add('active');
-
-    const upcoming = heroVideos[(currentVideoIndex + 1) % heroVideos.length];
-    if (upcoming && upcoming.getAttribute('preload') === 'none') {
-      upcoming.setAttribute('preload', 'auto');
-      upcoming.load();
-    }
-  }, CYCLE_MS);
+  }, 4000);
 }
 
 // ── Scroll animations ──
@@ -115,6 +125,8 @@ function animateSteps() {
     }
   });
 }
+
+
 
 // ── Star rating animation on scroll ──
 // Hide stars by default so they can animate in when visible

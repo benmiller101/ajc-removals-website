@@ -57,18 +57,15 @@
     <!-- Right panel: videos live here, centred within this column.
          On mobile this panel becomes a full-bleed absolute background. -->
     <div class="hero-right">
-      <!-- Video 1: preloads immediately (first to play) -->
-      <video class="hero-video active" autoplay muted loop playsinline preload="auto" poster="images/van.jpg">
-        <source src="videos/hero-1.mp4" type="video/mp4">
+      <!-- If Pexels URLs load slowly in production, download locally and update src to videos/hero-1.mp4 etc. -->
+      <video class="hero-video active" id="heroVideo0" muted playsinline autoplay loop preload="auto" poster="images/van.jpg">
+        <source src="https://www.pexels.com/download/video/5044420/" type="video/mp4">
       </video>
-      <!-- Video 2: deferred until ~2 s before first crossfade -->
-      <video class="hero-video" autoplay muted loop playsinline preload="none" poster="images/van.jpg">
-        <source src="videos/hero-2.mp4" type="video/mp4">
+      <video class="hero-video" id="heroVideo1" muted playsinline autoplay loop preload="none" poster="images/van.jpg">
+        <source src="https://www.pexels.com/download/video/35244873/" type="video/mp4">
       </video>
-      <!-- Video 3: deferred until ~2 s before second crossfade. -->
-      <video class="hero-video" autoplay muted loop playsinline preload="none" poster="images/van.jpg">
-        <source src="videos/hero-3.mp4" type="video/mp4">
-        <source src="videos/hero-1.mp4" type="video/mp4">
+      <video class="hero-video" id="heroVideo2" muted playsinline autoplay loop preload="none" poster="images/van.jpg">
+        <source src="https://www.pexels.com/download/video/4169704/" type="video/mp4">
       </video>
     </div>
   </section>
