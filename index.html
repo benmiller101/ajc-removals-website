@@ -4,6 +4,11 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>AJC Removals &amp; Clearances | Cornwall &amp; Devon</title>
+  <meta name="description" content="AJC Removals &amp; Clearances — professional house and business removals and site clearances across Cornwall, Devon and beyond. Fully insured, licensed waste carrier, free quotes." />
+  <meta property="og:title" content="AJC Removals &amp; Clearances | Cornwall &amp; Devon" />
+  <meta property="og:description" content="We move it. We clear it. Simple as that. Trusted removals and clearances across Cornwall &amp; Devon." />
+  <meta property="og:type" content="website" />
+  <link rel="icon" type="image/png" href="images/AJC Logo.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
@@ -53,17 +58,17 @@
          On mobile this panel becomes a full-bleed absolute background. -->
     <div class="hero-right">
       <!-- Video 1: preloads immediately (first to play) -->
-      <video class="hero-video active" autoplay muted loop playsinline preload="auto">
+      <video class="hero-video active" autoplay muted loop playsinline preload="auto" poster="images/van.jpg">
         <source src="videos/hero-1.mp4" type="video/mp4">
       </video>
       <!-- Video 2: deferred until ~2 s before first crossfade -->
-      <video class="hero-video" autoplay muted loop playsinline preload="none">
+      <video class="hero-video" autoplay muted loop playsinline preload="none" poster="images/van.jpg">
         <source src="videos/hero-2.mp4" type="video/mp4">
       </video>
       <!-- Video 3: deferred until ~2 s before second crossfade.
            TODO: Download https://www.pexels.com/download/video/4169704/ and save as
                  videos/hero-3.mp4 — hero-1.mp4 is used as a fallback until then. -->
-      <video class="hero-video" autoplay muted loop playsinline preload="none">
+      <video class="hero-video" autoplay muted loop playsinline preload="none" poster="images/van.jpg">
         <source src="videos/hero-3.mp4" type="video/mp4">
         <source src="videos/hero-1.mp4" type="video/mp4">
       </video>
@@ -229,6 +234,7 @@
           </div>
           <p>"I would highly recommend AJC removals. I found them to be polite, punctual and really helpful. They handled my delivery with care and consideration and there was great communication throughout. A job done swiftly for a fair price too. Thank you!"</p>
           <span class="review-name">— Katy D., Cornwall</span>
+          <span class="review-source">★ Google Review</span>
         </div>
 
         <div class="review-card fade-up" data-delay="0.15">
@@ -237,6 +243,7 @@
           </div>
           <p>"Highly recommend Amar, Alex and Tristan!! AJC removals totally took the stress out of moving house. They were polite and respectful and made sure all the boxes ended up in the correct rooms. They even dismantled and reassembled my bed and set up an office in the new property. Thank you for a smooth and fun day!"</p>
           <span class="review-name">— Bridge J., Cornwall</span>
+          <span class="review-source">★ Google Review</span>
         </div>
 
         <div class="review-card fade-up" data-delay="0.3">
@@ -245,6 +252,7 @@
           </div>
           <p>"Absolutely brilliant service from start to finish. The team were punctual, professional, and took great care with all our furniture. Would highly recommend to anyone moving home."</p>
           <span class="review-name">— Sarah M., Devon</span>
+          <span class="review-source">★ Google Review</span>
         </div>
 
       </div>
@@ -296,6 +304,14 @@
           <div>Mon – Sat: 7:00am – 7:00pm &nbsp;|&nbsp; Sun: 8:00am – 4:00pm</div>
           <div>Based in Cornwall, UK</div>
         </div>
+        <form class="contact-form" name="contact" netlify>
+          <div class="form-row">
+            <input type="text" name="name" placeholder="Your name" required />
+            <input type="tel" name="phone" placeholder="Your phone number" />
+          </div>
+          <textarea name="message" placeholder="Tell us what you need..." rows="4" required></textarea>
+          <button type="submit" class="btn btn-white">Send Enquiry</button>
+        </form>
       </div>
     </div>
   </section>
@@ -334,6 +350,24 @@
     <div class="footer-bottom">&copy; 2026 AJC Removals &amp; Clearances. All rights reserved.</div>
   </footer>
 
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "MovingCompany",
+    "name": "AJC Removals & Clearances",
+    "telephone": "07946672803",
+    "email": "info@ajcremovals.co.uk",
+    "address": {
+      "@type": "PostalAddress",
+      "addressRegion": "Cornwall",
+      "addressCountry": "GB"
+    },
+    "areaServed": ["Cornwall", "Devon", "Plymouth", "Exeter"],
+    "openingHours": ["Mo-Sa 07:00-19:00", "Su 08:00-16:00"],
+    "priceRange": "££",
+    "description": "Professional removals and clearance services across Cornwall, Devon and beyond. Fully insured and licensed waste carrier."
+  }
+  </script>
   <script src="js/main.js"></script>
 </body>
 </html>

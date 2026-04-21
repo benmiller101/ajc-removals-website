@@ -1,6 +1,7 @@
 // ── Nav ──
 const hamburger = document.getElementById('hamburger');
 const mobileMenu = document.getElementById('mobileMenu');
+const nav = document.querySelector('nav');
 
 hamburger.addEventListener('click', () => {
   const isOpen = mobileMenu.classList.toggle('open');
@@ -16,6 +17,22 @@ document.querySelectorAll('.nav-close').forEach(link => {
   });
 });
 
+// Close mobile menu when clicking outside
+document.addEventListener('click', (e) => {
+  if (mobileMenu.classList.contains('open') &&
+      !mobileMenu.contains(e.target) &&
+      !hamburger.contains(e.target)) {
+    mobileMenu.classList.remove('open');
+    hamburger.classList.remove('open');
+    hamburger.setAttribute('aria-label', 'Open menu');
+  }
+});
+
+// Nav background on scroll
+window.addEventListener('scroll', () => {
+  nav.classList.toggle('scrolled', window.scrollY > 60);
+}, { passive: true });
+
 // ── Hero video cycling (crossfade every 7 seconds) ──
 // Videos 2 and 3 start with preload="none"; we trigger loading ~2 s before each plays.
 const heroVideos = Array.from(document.querySelectorAll('.hero-video'));
@@ -23,7 +40,6 @@ let currentVideoIndex = 0;
 const CYCLE_MS = 7000;
 const PRELOAD_AHEAD_MS = 2000;
 
-// Diagnostic: log which video fails so broken URLs can be identified
 heroVideos.forEach((v, i) => {
   v.addEventListener('error', () => {
     console.error(`Hero video ${i + 1} failed to load:`, v.currentSrc || v.src);
@@ -31,7 +47,6 @@ heroVideos.forEach((v, i) => {
 });
 
 if (heroVideos.length > 1) {
-  // Kick off loading of video 2 just before its first play
   setTimeout(() => {
     const v = heroVideos[1];
     if (v && v.getAttribute('preload') === 'none') {
@@ -41,12 +56,10 @@ if (heroVideos.length > 1) {
   }, CYCLE_MS - PRELOAD_AHEAD_MS);
 
   setInterval(() => {
-    // Transition to next video
     heroVideos[currentVideoIndex].classList.remove('active');
     currentVideoIndex = (currentVideoIndex + 1) % heroVideos.length;
     heroVideos[currentVideoIndex].classList.add('active');
 
-    // Preload the video after that so it's ready by the time it's needed
     const upcoming = heroVideos[(currentVideoIndex + 1) % heroVideos.length];
     if (upcoming && upcoming.getAttribute('preload') === 'none') {
       upcoming.setAttribute('preload', 'auto');
@@ -86,19 +99,15 @@ if (stepsTrack) {
 }
 
 function animateSteps() {
-  const isMobile = window.innerWidth <= 768;
   const items = Array.from(stepsTrack.children);
   let delay = 0;
 
   items.forEach(item => {
-    const isStep = item.classList.contains('step');
-    const isConnector = item.classList.contains('step-connector');
-
-    if (isStep) {
+    if (item.classList.contains('step')) {
       const d = delay;
       setTimeout(() => item.classList.add('step-visible'), d);
       delay += 500;
-    } else if (isConnector) {
+    } else if (item.classList.contains('step-connector')) {
       const d = delay;
       setTimeout(() => item.classList.add('connector-visible'), d - 150);
       delay += 300;
@@ -107,6 +116,9 @@ function animateSteps() {
 }
 
 // ── Star rating animation on scroll ──
+// Hide stars by default so they can animate in when visible
+document.querySelectorAll('.stars').forEach(s => s.classList.add('stars-waiting'));
+
 const starObserver = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
     if (entry.isIntersecting && !entry.target.classList.contains('stars-animated')) {
