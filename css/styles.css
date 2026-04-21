@@ -54,7 +54,9 @@ nav {
   left: 0;
   right: 0;
   z-index: 200;
-  background: transparent;
+  background: rgba(26, 26, 26, 0.85);
+  -webkit-backdrop-filter: blur(6px);
+  backdrop-filter: blur(6px);
   height: var(--nav-height);
   display: flex;
   align-items: center;
@@ -463,6 +465,7 @@ nav.scrolled {
   align-items: flex-start;
   max-width: 960px;
   margin: 0 auto;
+  overflow: visible;
 }
 
 .step {
@@ -472,6 +475,7 @@ nav.scrolled {
   opacity: 0;
   transform: translateY(24px);
   transition: opacity 0.5s ease, transform 0.5s ease;
+  min-width: 0;
 }
 
 .step.step-visible {
@@ -488,12 +492,14 @@ nav.scrolled {
   transform-origin: left;
   transition: transform 0.4s ease;
   position: relative;
+  overflow: visible;
+  z-index: 1;
 }
 
 .step-connector::after {
   content: '';
   position: absolute;
-  right: -1px;
+  right: -8px;
   top: 50%;
   transform: translateY(-50%);
   border-left: 7px solid var(--accent);
@@ -571,11 +577,11 @@ nav.scrolled {
   margin: 0 auto;
 }
 
-/* Items 1 and 4 (0-indexed: 0 and 3) span 2 columns for visual interest */
-.gallery-item:nth-child(1),
-.gallery-item:nth-child(4) {
-  grid-column: span 2;
-}
+.gallery-item:nth-child(1) { grid-column: 1 / 3; grid-row: 1; }
+.gallery-item:nth-child(2) { grid-column: 3; grid-row: 1; }
+.gallery-item:nth-child(3) { grid-column: 1; grid-row: 2; }
+.gallery-item:nth-child(4) { grid-column: 2 / 4; grid-row: 2; }
+.gallery-item:nth-child(5) { grid-column: 1 / -1; grid-row: 3; }
 
 .gallery-item {
   position: relative;
@@ -702,6 +708,16 @@ nav.scrolled {
   font-weight: 500;
   color: var(--accent);
   letter-spacing: 0.03em;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.fb-icon {
+  width: 14px;
+  height: 14px;
+  fill: #1877F2;
+  flex-shrink: 0;
 }
 
 /* ── SERVICE AREA ── */
@@ -1136,8 +1152,12 @@ footer {
   }
 
   .gallery-item:nth-child(1),
-  .gallery-item:nth-child(4) {
-    grid-column: span 1;
+  .gallery-item:nth-child(2),
+  .gallery-item:nth-child(3),
+  .gallery-item:nth-child(4),
+  .gallery-item:nth-child(5) {
+    grid-column: auto;
+    grid-row: auto;
   }
 
   .form-row {

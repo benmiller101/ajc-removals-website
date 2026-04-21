@@ -43,6 +43,7 @@ const PRELOAD_AHEAD_MS = 2000;
 heroVideos.forEach((v, i) => {
   v.addEventListener('error', () => {
     console.error(`Hero video ${i + 1} failed to load:`, v.currentSrc || v.src);
+    v.style.display = 'none';
   });
 });
 
@@ -126,8 +127,8 @@ const starObserver = new IntersectionObserver((entries) => {
       const stars = entry.target.querySelectorAll('.star');
       stars.forEach((star, i) => {
         setTimeout(() => {
-          star.style.animation = 'starIn 0.4s ease forwards';
-        }, i * 90);
+          star.style.animation = 'starIn 1.8s cubic-bezier(0.34, 1.56, 0.64, 1) forwards';
+        }, i * 200);
       });
       starObserver.unobserve(entry.target);
     }
