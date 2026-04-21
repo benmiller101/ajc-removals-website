@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AJC Removals &amp; Clearances | Cornwall &amp; Devon</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="#" class="nav-logo">
+      <img src="images/AJC Logo@2x.png" alt="AJC Removals &amp; Clearances" />
+    </a>
+    <ul class="nav-links">
+      <li><a href="#services">Services</a></li>
+      <li><a href="#how-it-works">How It Works</a></li>
+      <li><a href="#reviews">Reviews</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <button class="hamburger" id="hamburger" aria-label="Open menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+  <div class="mobile-menu" id="mobileMenu">
+    <ul>
+      <li><a href="#services" class="nav-close">Services</a></li>
+      <li><a href="#how-it-works" class="nav-close">How It Works</a></li>
+      <li><a href="#reviews" class="nav-close">Reviews</a></li>
+      <li><a href="#contact" class="nav-close">Contact</a></li>
+    </ul>
+  </div>
+
+  <!-- HERO -->
+  <section id="hero">
+    <!-- Dark overlay — mobile only (sits above videos, below text content) -->
+    <div class="hero-overlay"></div>
+
+    <div class="hero-left">
+      <div class="hero-left-content">
+        <span class="hero-strapline">Cornwall &amp; Devon's Trusted Removal Team</span>
+        <h1><span class="hero-ajc">AJC</span><br><span class="hero-rmc">Removals &amp; Clearances</span></h1>
+        <p class="hero-tagline">We move it. We clear it. Simple as that.</p>
+        <a href="tel:07946672803" class="btn">Call Us Now</a>
+      </div>
+    </div>
+
+    <!-- Right panel: videos live here, centred within this column.
+         On mobile this panel becomes a full-bleed absolute background. -->
+    <div class="hero-right">
+      <!-- Video 1: preloads immediately (first to play) -->
+      <video class="hero-video active" autoplay muted loop playsinline preload="auto">
+        <source src="videos/hero-1.mp4" type="video/mp4">
+      </video>
+      <!-- Video 2: deferred until ~2 s before first crossfade -->
+      <video class="hero-video" autoplay muted loop playsinline preload="none">
+        <source src="videos/hero-2.mp4" type="video/mp4">
+      </video>
+      <!-- Video 3: deferred until ~2 s before second crossfade.
+           TODO: Download https://www.pexels.com/download/video/4169704/ and save as
+                 videos/hero-3.mp4 — hero-1.mp4 is used as a fallback until then. -->
+      <video class="hero-video" autoplay muted loop playsinline preload="none">
+        <source src="videos/hero-3.mp4" type="video/mp4">
+        <source src="videos/hero-1.mp4" type="video/mp4">
+      </video>
+    </div>
+  </section>
+
+  <!-- TRUST BAR -->
+  <div class="trust-bar">
+    <div class="trust-bar-inner">
+      <div class="trust-item fade-up" data-delay="0">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        <span>Fully Insured</span>
+      </div>
+      <div class="trust-item fade-up" data-delay="0.1">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="1" y="3" width="15" height="13" rx="1"/><path d="M16 8h4l3 3v5h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+        <span>Licensed Waste Carrier</span>
+      </div>
+      <div class="trust-item fade-up" data-delay="0.2">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        <span>Short Notice Welcome</span>
+      </div>
+      <div class="trust-item fade-up" data-delay="0.3">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+        <span>Free Quotes</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- SERVICES -->
+  <section id="services">
+    <div class="container">
+      <h2 class="section-heading fade-up">Our Services</h2>
+      <span class="heading-rule fade-up" data-delay="0.1"></span>
+      <div class="cards">
+
+        <div class="card fade-up" data-delay="0.1">
+          <div class="card-icon-wrap">
+            <svg class="card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+              <polyline points="9 22 9 12 15 12 15 22"/>
+            </svg>
+          </div>
+          <h3>House &amp; Business Removals</h3>
+          <p>Whether you're moving home or relocating your business, we handle everything with care and efficiency. Our team ensures your belongings arrive safely, on time, every time.</p>
+        </div>
+
+        <div class="card fade-up" data-delay="0.25">
+          <div class="card-icon-wrap">
+            <svg class="card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="3 6 5 6 21 6"/>
+              <path d="M19 6l-1 14H6L5 6"/>
+              <path d="M10 11v6M14 11v6"/>
+              <path d="M9 6V4a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2"/>
+            </svg>
+          </div>
+          <h3>Property &amp; Site Clearances</h3>
+          <p>Fast, reliable clearance of houses, gardens, garages, and commercial sites. We dispose of waste responsibly and leave the property clean and ready for its next use.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section id="how-it-works">
+    <div class="container">
+      <h2 class="section-heading fade-up">How It Works</h2>
+      <span class="heading-rule fade-up" data-delay="0.1"></span>
+      <div class="steps-track" id="stepsTrack">
+
+        <div class="step">
+          <div class="step-number">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9a16 16 0 0 0 5.91 5.91l1.27-1.27a2 2 0 0 1 2.11-.45c.9.36 1.84.6 2.81.7A2 2 0 0 1 22 16.92z"/>
+            </svg>
+          </div>
+          <h3>Give Us a Call</h3>
+          <p>Get in touch by phone or email. We're friendly and happy to help with any questions.</p>
+        </div>
+
+        <div class="step-connector"></div>
+
+        <div class="step">
+          <div class="step-number">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+              <polyline points="14 2 14 8 20 8"/>
+              <line x1="12" y1="12" x2="12" y2="18"/>
+              <line x1="9" y1="15" x2="15" y2="15"/>
+            </svg>
+          </div>
+          <h3>Get a Free Quote</h3>
+          <p>We'll give you a clear, no-obligation quote with no hidden costs or surprises.</p>
+        </div>
+
+        <div class="step-connector"></div>
+
+        <div class="step">
+          <div class="step-number">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+              <line x1="16" y1="2" x2="16" y2="6"/>
+              <line x1="8" y1="2" x2="8" y2="6"/>
+              <line x1="3" y1="10" x2="21" y2="10"/>
+            </svg>
+          </div>
+          <h3>We Agree a Date</h3>
+          <p>Pick a date that works for you — including short notice. We'll be there on time.</p>
+        </div>
+
+        <div class="step-connector"></div>
+
+        <div class="step">
+          <div class="step-number">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <circle cx="12" cy="12" r="10"/>
+              <polyline points="9 12 11 14 15 10"/>
+            </svg>
+          </div>
+          <h3>Job Done</h3>
+          <p>We handle everything efficiently and leave the place clean. Simple as that.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- GALLERY -->
+  <section id="gallery">
+    <div class="container">
+      <h2 class="section-heading fade-up">Our Work</h2>
+      <span class="heading-rule fade-up" data-delay="0.1"></span>
+      <div class="gallery-grid">
+        <div class="gallery-item fade-up" data-delay="0">
+          <img src="images/gallery-2.jpg" alt="AJC Removals job photo" loading="lazy" />
+        </div>
+        <div class="gallery-item fade-up" data-delay="0.1">
+          <img src="images/gallery-3.jpg" alt="AJC Removals job photo" loading="lazy" />
+        </div>
+        <div class="gallery-item fade-up" data-delay="0.2">
+          <img src="images/gallery-4.jpg" alt="AJC Removals job photo" loading="lazy" />
+        </div>
+        <div class="gallery-item fade-up" data-delay="0.1">
+          <img src="images/gallery-5.jpg" alt="AJC Removals job photo" loading="lazy" />
+        </div>
+        <div class="gallery-item fade-up" data-delay="0.2">
+          <img src="images/gallery-6.jpg" alt="AJC Removals job photo" loading="lazy" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section id="reviews">
+    <div class="container">
+      <h2 class="section-heading fade-up">What Our Customers Say</h2>
+      <span class="heading-rule fade-up" data-delay="0.1"></span>
+      <div class="reviews-grid">
+
+        <div class="review-card fade-up" data-delay="0">
+          <div class="stars">
+            <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
+          </div>
+          <p>"I would highly recommend AJC removals. I found them to be polite, punctual and really helpful. They handled my delivery with care and consideration and there was great communication throughout. A job done swiftly for a fair price too. Thank you!"</p>
+          <span class="review-name">— Katy D., Cornwall</span>
+        </div>
+
+        <div class="review-card fade-up" data-delay="0.15">
+          <div class="stars">
+            <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
+          </div>
+          <p>"Highly recommend Amar, Alex and Tristan!! AJC removals totally took the stress out of moving house. They were polite and respectful and made sure all the boxes ended up in the correct rooms. They even dismantled and reassembled my bed and set up an office in the new property. Thank you for a smooth and fun day!"</p>
+          <span class="review-name">— Bridge J., Cornwall</span>
+        </div>
+
+        <div class="review-card fade-up" data-delay="0.3">
+          <div class="stars">
+            <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
+          </div>
+          <p>"Absolutely brilliant service from start to finish. The team were punctual, professional, and took great care with all our furniture. Would highly recommend to anyone moving home."</p>
+          <span class="review-name">— Sarah M., Devon</span>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICE AREA -->
+  <section id="area">
+    <div class="container">
+      <div class="area-inner">
+        <div class="area-text fade-up">
+          <h2 class="section-heading" style="text-align:left;">Service Area</h2>
+          <span class="heading-rule left"></span>
+          <p>Based in Cornwall, AJC Removals &amp; Clearances proudly serves customers across Cornwall, Devon, and the surrounding regions. Whether you're moving locally or further afield, we're happy to travel to meet your needs.</p>
+          <p>Not sure if we cover your area? Give us a call and we'll do our best to help.</p>
+          <a href="#contact" class="btn">Get in Touch</a>
+        </div>
+        <div class="area-towns fade-up" data-delay="0.2">
+          <h3>Areas We Cover</h3>
+          <ul>
+            <li>Truro</li>
+            <li>Falmouth</li>
+            <li>Bodmin</li>
+            <li>Newquay</li>
+            <li>St Austell</li>
+            <li>Penzance</li>
+            <li>Redruth</li>
+            <li>Camborne</li>
+            <li>Plymouth</li>
+            <li>Exeter</li>
+            <li>Torquay</li>
+            <li>Barnstaple</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="container">
+      <h2 class="section-heading fade-up">Get In Touch</h2>
+      <span class="heading-rule fade-up" data-delay="0.1"></span>
+      <div class="contact-body fade-up" data-delay="0.2">
+        <p class="contact-intro">Ready to book or get a free quote?</p>
+        <a href="tel:07946672803" class="contact-phone">07946 672 803</a>
+        <a href="mailto:info@ajcremovals.co.uk" class="contact-email">info@ajcremovals.co.uk</a>
+        <div class="contact-meta">
+          <div>Mon – Sat: 7:00am – 7:00pm &nbsp;|&nbsp; Sun: 8:00am – 4:00pm</div>
+          <div>Based in Cornwall, UK</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-grid">
+      <div class="footer-col">
+        <div class="footer-brand">
+          <img src="images/AJC Logo@2x.png" alt="AJC Removals &amp; Clearances" />
+        </div>
+        <p>Professional removals and clearance services across Cornwall, Devon and the surrounding regions. Fully insured and a licensed waste carrier.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#how-it-works">How It Works</a></li>
+          <li><a href="#gallery">Our Work</a></li>
+          <li><a href="#reviews">Reviews</a></li>
+          <li><a href="#area">Service Area</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contact Us</h4>
+        <address>
+          <a href="tel:07946672803">07946 672 803</a><br />
+          <a href="mailto:info@ajcremovals.co.uk">info@ajcremovals.co.uk</a><br /><br />
+          Mon – Sat: 7:00am – 7:00pm<br />
+          Sun: 8:00am – 4:00pm<br />
+          Cornwall, UK
+        </address>
+      </div>
+    </div>
+    <div class="footer-bottom">&copy; 2026 AJC Removals &amp; Clearances. All rights reserved.</div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
