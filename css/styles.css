@@ -17,8 +17,11 @@ html {
   scroll-padding-top: var(--nav-height);
 }
 
+/* System stack after Montserrat so text paints immediately if the webfont
+   is slow — on a weak connection that is the difference between a readable
+   page and a blank one. */
 body {
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
   background: var(--bg);
   color: var(--text);
   font-size: 16px;
@@ -105,6 +108,29 @@ nav {
 
 .nav-links a:hover { color: #ffffff; }
 .nav-links a:hover::after { width: 100%; }
+
+/* Desktop: call button lives in the nav, so it is on screen at all times. */
+.nav-call {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--accent);
+  color: #ffffff;
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  padding: 10px 20px;
+  border-radius: 4px;
+  white-space: nowrap;
+  transition: background 0.2s, transform 0.15s;
+}
+
+.nav-call:hover {
+  background: #c85a1f;
+  transform: translateY(-1px);
+}
+
+.nav-call svg { flex-shrink: 0; }
 
 .hamburger {
   display: none;
@@ -193,11 +219,17 @@ nav {
   opacity: 1;
 }
 
-/* Dark overlay — mobile only */
+/* Dark overlay — mobile only.
+   The van photo has large light-grey panels, so a flat 0.42 wash left the
+   white H1 barely readable. Darker in the middle, where the text sits. */
 .hero-overlay {
   position: absolute;
   inset: 0;
-  background: rgba(0, 0, 0, 0.42);
+  background: linear-gradient(180deg,
+              rgba(0, 0, 0, 0.55) 0%,
+              rgba(0, 0, 0, 0.72) 45%,
+              rgba(0, 0, 0, 0.72) 65%,
+              rgba(0, 0, 0, 0.5) 100%);
   z-index: 1;
   display: none;
 }
@@ -227,8 +259,11 @@ nav {
   z-index: 1;
   clip-path: polygon(18% 0, 100% 0, 100% 100%, 0% 100%);
   animation: heroFadeIn 1.1s ease both 0.3s;
-  /* van.jpg shows while videos load */
+  /* The van photo is the whole hero visual on mobile, and the placeholder
+     behind the video on desktop. It is the only image phones download here. */
   background: var(--hero-dark) url('../images/van.jpg') center / cover no-repeat;
+  background-image: image-set(url('../images/van.webp') type('image/webp'),
+                              url('../images/van.jpg') type('image/jpeg'));
 }
 
 @keyframes heroSlideIn {
@@ -379,14 +414,17 @@ nav {
   scroll-margin-top: var(--nav-height);
 }
 
-/* ── SERVICES ── */
+/* ── SERVICES ──
+   Section order below the hero is: reviews → services → how-it-works →
+   gallery → area → contact. Each section's diagonal must run the opposite way
+   to the one above it so the two edges nest; z-index descends down the page. */
 #services {
   background: var(--bg-white);
   padding: calc(var(--diag) + 80px) 24px 100px;
-  clip-path: polygon(0 var(--diag), 100% 0, 100% 100%, 0 100%);
+  clip-path: polygon(0 0, 100% var(--diag), 100% 100%, 0 100%);
   margin-top: calc(-1 * var(--diag));
   position: relative;
-  z-index: 8;
+  z-index: 7;
 }
 
 .cards {
@@ -449,10 +487,10 @@ nav {
 #how-it-works {
   background: var(--bg);
   padding: calc(var(--diag) + 80px) 24px 100px;
-  clip-path: polygon(0 0, 100% var(--diag), 100% 100%, 0 100%);
+  clip-path: polygon(0 var(--diag), 100% 0, 100% 100%, 0 100%);
   margin-top: calc(-1 * var(--diag));
   position: relative;
-  z-index: 7;
+  z-index: 6;
 }
 
 .steps-track {
@@ -558,10 +596,10 @@ nav {
 #gallery {
   background: var(--bg-white);
   padding: calc(var(--diag) + 80px) 24px 100px;
-  clip-path: polygon(0 var(--diag), 100% 0, 100% 100%, 0 100%);
+  clip-path: polygon(0 0, 100% var(--diag), 100% 100%, 0 100%);
   margin-top: calc(-1 * var(--diag));
   position: relative;
-  z-index: 6;
+  z-index: 5;
 }
 
 .gallery-grid {
@@ -609,10 +647,10 @@ nav {
 #reviews {
   background: var(--bg);
   padding: calc(var(--diag) + 80px) 24px 100px;
-  clip-path: polygon(0 0, 100% var(--diag), 100% 100%, 0 100%);
+  clip-path: polygon(0 var(--diag), 100% 0, 100% 100%, 0 100%);
   margin-top: calc(-1 * var(--diag));
   position: relative;
-  z-index: 5;
+  z-index: 8;
 }
 
 .reviews-grid {
@@ -711,7 +749,8 @@ nav {
 
 /* ── SERVICE AREA ── */
 #area {
-  background: var(--bg-white);
+  /* grey, so the diagonal against the white gallery above it stays visible */
+  background: var(--bg);
   padding: calc(var(--diag) + 80px) 24px 100px;
   clip-path: polygon(0 var(--diag), 100% 0, 100% 100%, 0 100%);
   margin-top: calc(-1 * var(--diag));
@@ -973,6 +1012,56 @@ footer {
   text-align: center;
 }
 
+/* ── STICKY CALL BAR (mobile) ──
+   Hidden on desktop, where .nav-call covers the same job. Slides up once the
+   hero's own call button has scrolled away, so the two never compete. */
+.sticky-call {
+  display: none;
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 300;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  background: var(--accent);
+  color: #ffffff;
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-align: center;
+  padding: 16px 20px;
+  padding-bottom: calc(16px + env(safe-area-inset-bottom, 0px));
+  box-shadow: 0 -4px 18px rgba(0, 0, 0, 0.22);
+  transform: translateY(110%);
+  transition: transform 0.28s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.sticky-call svg { flex-shrink: 0; }
+
+.sticky-call.visible { transform: translateY(0); }
+
+.sticky-call:active { background: #c85a1f; }
+
+/* ── UTILITIES ── */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Netlify honeypot — must exist in the DOM but never be seen */
+.hp-field { display: none; }
+
+.area-towns-second { margin-top: 28px; }
+
 /* ── MID-DESKTOP BREAKPOINT ── */
 @media (min-width: 769px) and (max-width: 1100px) {
   nav { padding: 0 28px; }
@@ -1005,7 +1094,13 @@ footer {
 
   nav { padding: 0 24px; }
   .nav-links { display: none; }
+  .nav-call { display: none; }   /* the sticky bottom bar covers this on mobile */
   .hamburger { display: flex; }
+
+  .sticky-call { display: flex; }
+
+  /* Room so the bar never sits on top of the last line of the footer */
+  body { padding-bottom: 64px; }
 
   #hero {
     min-height: 100vh;
@@ -1049,29 +1144,30 @@ footer {
     animation: none;
   }
 
-  /* Restore diagonal sections on mobile with smaller --diag */
-  #services {
+  /* Restore diagonal sections on mobile with smaller --diag.
+     Directions must match the desktop rules above, in page order. */
+  #reviews {
     clip-path: polygon(0 var(--diag), 100% 0, 100% 100%, 0 100%);
     margin-top: calc(-1 * var(--diag));
     padding-top: calc(var(--diag) + 60px);
     padding-bottom: 72px;
   }
 
-  #how-it-works {
+  #services {
     clip-path: polygon(0 0, 100% var(--diag), 100% 100%, 0 100%);
     margin-top: calc(-1 * var(--diag));
     padding-top: calc(var(--diag) + 60px);
     padding-bottom: 72px;
   }
 
-  #gallery {
+  #how-it-works {
     clip-path: polygon(0 var(--diag), 100% 0, 100% 100%, 0 100%);
     margin-top: calc(-1 * var(--diag));
     padding-top: calc(var(--diag) + 60px);
     padding-bottom: 72px;
   }
 
-  #reviews {
+  #gallery {
     clip-path: polygon(0 0, 100% var(--diag), 100% 100%, 0 100%);
     margin-top: calc(-1 * var(--diag));
     padding-top: calc(var(--diag) + 60px);

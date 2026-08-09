@@ -3,18 +3,19 @@ const hamburger = document.getElementById('hamburger');
 const mobileMenu = document.getElementById('mobileMenu');
 const nav = document.querySelector('nav');
 
-hamburger.addEventListener('click', () => {
-  const isOpen = mobileMenu.classList.toggle('open');
+function setMenu(isOpen) {
+  mobileMenu.classList.toggle('open', isOpen);
   hamburger.classList.toggle('open', isOpen);
   hamburger.setAttribute('aria-label', isOpen ? 'Close menu' : 'Open menu');
+  hamburger.setAttribute('aria-expanded', String(isOpen));
+}
+
+hamburger.addEventListener('click', () => {
+  setMenu(!mobileMenu.classList.contains('open'));
 });
 
 document.querySelectorAll('.nav-close').forEach(link => {
-  link.addEventListener('click', () => {
-    mobileMenu.classList.remove('open');
-    hamburger.classList.remove('open');
-    hamburger.setAttribute('aria-label', 'Open menu');
-  });
+  link.addEventListener('click', () => setMenu(false));
 });
 
 // Close mobile menu when clicking outside
@@ -22,61 +23,72 @@ document.addEventListener('click', (e) => {
   if (mobileMenu.classList.contains('open') &&
       !mobileMenu.contains(e.target) &&
       !hamburger.contains(e.target)) {
-    mobileMenu.classList.remove('open');
-    hamburger.classList.remove('open');
-    hamburger.setAttribute('aria-label', 'Open menu');
+    setMenu(false);
   }
 });
 
-
-// ── Hero video cycling ──
-const heroVideos = Array.from(document.querySelectorAll('.hero-video'));
-let currentIndex = 0;
-const CYCLE_MS = 7000;
-let cycleTimer = null;
-
-function loadVideo(video) {
-  if (video && video.getAttribute('preload') === 'none') {
-    video.setAttribute('preload', 'auto');
-    video.load();
-    video.play().catch(() => {});
-  }
-}
-
-function crossfadeTo(nextIndex) {
-  heroVideos[currentIndex].classList.remove('active');
-  currentIndex = nextIndex % heroVideos.length;
-  heroVideos[currentIndex].classList.add('active');
-  loadVideo(heroVideos[(currentIndex + 1) % heroVideos.length]);
-}
-
-function startCycling() {
-  if (heroVideos.length < 2) return;
-  loadVideo(heroVideos[1]);
-  cycleTimer = setInterval(() => {
-    crossfadeTo(currentIndex + 1);
-  }, CYCLE_MS);
-}
-
-heroVideos.forEach((video, i) => {
-  video.addEventListener('error', () => {
-    console.warn(`Hero video ${i + 1} failed to load. Skipping.`);
-    video.classList.add('video-failed');
-  });
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape' && mobileMenu.classList.contains('open')) setMenu(false);
 });
 
-const firstVideo = heroVideos[0];
-if (firstVideo) {
-  firstVideo.addEventListener('canplay', () => {
-    firstVideo.play().catch(() => {});
-    startCycling();
+
+// ── Hero video ──
+// The video is a desktop-only enhancement. Phones, slow connections and
+// data-saver users keep the van photo, which is already painted by CSS —
+// nothing extra is downloaded for them. The <video> carries no <source> in
+// the markup, so nothing loads until we decide it should.
+const heroVideo = document.getElementById('heroVideo');
+
+function heroVideoWanted() {
+  if (!heroVideo) return false;
+  if (!window.matchMedia('(min-width: 769px)').matches) return false;
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return false;
+
+  const conn = navigator.connection;
+  if (conn) {
+    if (conn.saveData) return false;
+    if (/(^|-)(2g|slow-2g)$/.test(conn.effectiveType || '')) return false;
+  }
+  return true;
+}
+
+// A <source> that fails to load fires 'error' on itself, not on the <video>,
+// and leaves video.error null — so the listener has to go on the source.
+function attachHeroSource(url, onError) {
+  const source = document.createElement('source');
+  source.src = url;
+  source.type = 'video/mp4';
+  if (onError) source.addEventListener('error', onError, { once: true });
+  heroVideo.appendChild(source);
+  heroVideo.load();
+}
+
+if (heroVideoWanted()) {
+  const local = heroVideo.dataset.src;
+  const fallback = heroVideo.dataset.fallback;
+
+  heroVideo.addEventListener('canplay', () => {
+    heroVideo.classList.add('active');
+    heroVideo.play().catch(() => {});
   }, { once: true });
 
-  setTimeout(() => {
-    if (cycleTimer === null && heroVideos.length > 1) {
-      startCycling();
-    }
-  }, 4000);
+  // Until videos/hero.mp4 exists, fall back to the remote clip once.
+  attachHeroSource(local, fallback ? () => {
+    heroVideo.replaceChildren();
+    attachHeroSource(fallback);
+  } : null);
+}
+
+// ── Sticky call bar ──
+// Appears once the hero (with its own call button) has scrolled out of view,
+// and stays put from there to the bottom of the page.
+const stickyCall = document.getElementById('stickyCall');
+const hero = document.getElementById('hero');
+
+if (stickyCall && hero) {
+  new IntersectionObserver(([entry]) => {
+    stickyCall.classList.toggle('visible', !entry.isIntersecting);
+  }, { threshold: 0, rootMargin: '-80px 0px 0px 0px' }).observe(hero);
 }
 
 // ── Scroll animations ──

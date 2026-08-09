@@ -1,48 +1,71 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en-GB">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>AJC Removals &amp; Clearances | Cornwall &amp; Devon</title>
-  <meta name="description" content="AJC Removals &amp; Clearances — professional house and business removals and site clearances across Cornwall, Devon and beyond. Fully insured, licensed waste carrier, free quotes." />
-  <meta property="og:title" content="AJC Removals &amp; Clearances | Cornwall &amp; Devon" />
-  <meta property="og:description" content="We move it. We clear it. Simple as that. Trusted removals and clearances across Cornwall &amp; Devon." />
+  <title>Removals &amp; Clearances in Cornwall &amp; Devon | AJC Removals</title>
+  <meta name="description" content="House and business removals and property clearances in Truro, Falmouth, Newquay, St Austell, Plymouth, Exeter and across Cornwall &amp; Devon. Fully insured, licensed waste carrier, free quotes." />
+  <link rel="canonical" href="https://ajcremovals.co.uk/" />
+  <meta name="theme-color" content="#1a1a1a" />
+
+  <meta property="og:site_name" content="AJC Removals &amp; Clearances" />
+  <meta property="og:title" content="Removals &amp; Clearances in Cornwall &amp; Devon | AJC Removals" />
+  <meta property="og:description" content="We move it. We clear it. Simple as that. Removals and clearances across Truro, Falmouth, Newquay, Plymouth, Exeter and the rest of Cornwall &amp; Devon." />
   <meta property="og:type" content="website" />
-  <link rel="icon" type="image/png" href="images/AJC Logo.png" />
+  <meta property="og:url" content="https://ajcremovals.co.uk/" />
+  <meta property="og:image" content="https://ajcremovals.co.uk/images/og-image.jpg" />
+  <meta property="og:locale" content="en_GB" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <link rel="icon" type="image/png" sizes="96x96" href="images/favicon-96.png" />
+  <link rel="apple-touch-icon" href="images/logo-320.png" />
+
+  <!-- LCP image on mobile: the hero background -->
+  <link rel="preload" as="image" href="images/van.webp" type="image/webp" fetchpriority="high" />
+
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="css/styles.css" />
 </head>
 <body>
 
   <!-- NAV -->
   <nav>
-    <a href="#" class="nav-logo">
-      <img src="images/AJC Logo@2x.png" alt="AJC Removals &amp; Clearances" />
+    <a href="#hero" class="nav-logo" aria-label="AJC Removals &amp; Clearances — home">
+      <picture>
+        <source srcset="images/logo-320.webp" type="image/webp" />
+        <img src="images/logo-320.png" alt="AJC Removals &amp; Clearances" width="320" height="320" />
+      </picture>
     </a>
     <ul class="nav-links">
+      <li><a href="#reviews">Reviews</a></li>
       <li><a href="#services">Services</a></li>
       <li><a href="#how-it-works">How It Works</a></li>
-      <li><a href="#reviews">Reviews</a></li>
+      <li><a href="#area">Areas We Cover</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
-    <button class="hamburger" id="hamburger" aria-label="Open menu">
+    <a href="tel:+447946672803" class="nav-call">
+      <svg viewBox="0 0 24 24" fill="currentColor" width="16" height="16" aria-hidden="true"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+      07946 672 803
+    </a>
+    <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu">
       <span></span><span></span><span></span>
     </button>
   </nav>
   <div class="mobile-menu" id="mobileMenu">
     <ul>
+      <li><a href="#reviews" class="nav-close">Reviews</a></li>
       <li><a href="#services" class="nav-close">Services</a></li>
       <li><a href="#how-it-works" class="nav-close">How It Works</a></li>
-      <li><a href="#reviews" class="nav-close">Reviews</a></li>
+      <li><a href="#area" class="nav-close">Areas We Cover</a></li>
       <li><a href="#contact" class="nav-close">Contact</a></li>
     </ul>
   </div>
 
   <!-- HERO -->
   <section id="hero">
-    <!-- Dark overlay — mobile only (sits above videos, below text content) -->
+    <!-- Dark overlay — mobile only (sits above the background, below text content) -->
     <div class="hero-overlay"></div>
 
     <div class="hero-left">
@@ -50,23 +73,16 @@
         <span class="hero-strapline">Cornwall &amp; Devon's Trusted Removal Team</span>
         <h1><span class="hero-ajc">AJC</span><br><span class="hero-rmc">Removals &amp; Clearances</span></h1>
         <p class="hero-tagline">We move it. We clear it. Simple as that.</p>
-        <a href="tel:07946672803" class="btn"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="20" height="20" style="vertical-align:middle;margin-right:8px;" aria-hidden="true"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>Call 07946 672 803</a>
+        <a href="tel:+447946672803" class="btn"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="20" height="20" style="vertical-align:middle;margin-right:8px;" aria-hidden="true"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>Call 07946 672 803</a>
       </div>
     </div>
 
-    <!-- Right panel: videos live here, centred within this column.
-         On mobile this panel becomes a full-bleed absolute background. -->
+    <!-- Right panel. The van photo is a CSS background, so it is the only image
+         phones ever download here. The video is injected by JS on desktop only. -->
     <div class="hero-right">
-      <!-- If Pexels URLs load slowly in production, download locally and update src to videos/hero-1.mp4 etc. -->
-      <video class="hero-video active" id="heroVideo0" muted playsinline autoplay loop preload="auto" poster="images/van.jpg">
-        <source src="https://www.pexels.com/download/video/5044420/" type="video/mp4">
-      </video>
-      <video class="hero-video" id="heroVideo1" muted playsinline autoplay loop preload="none" poster="images/van.jpg">
-        <source src="https://www.pexels.com/download/video/35244873/" type="video/mp4">
-      </video>
-      <video class="hero-video" id="heroVideo2" muted playsinline autoplay loop preload="none" poster="images/van.jpg">
-        <source src="https://www.pexels.com/download/video/4169704/" type="video/mp4">
-      </video>
+      <video class="hero-video" id="heroVideo" muted playsinline loop preload="none" aria-hidden="true" tabindex="-1"
+             data-src="videos/hero.mp4"
+             data-fallback="https://www.pexels.com/download/video/5044420/"></video>
     </div>
   </section>
 
@@ -92,27 +108,65 @@
     </div>
   </div>
 
+  <!-- TESTIMONIALS — first thing below the hero -->
+  <section id="reviews">
+    <div class="container">
+      <h2 class="section-heading fade-up">What Our Customers Say</h2>
+      <span class="heading-rule fade-up" data-delay="0.1"></span>
+      <div class="reviews-grid">
+
+        <div class="review-card fade-up" data-delay="0">
+          <div class="stars" role="img" aria-label="5 out of 5 stars">
+            <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
+          </div>
+          <p>"I would highly recommend AJC removals. I found them to be polite, punctual and really helpful. They handled my delivery with care and consideration and there was great communication throughout. A job done swiftly for a fair price too. Thank you!"</p>
+          <span class="review-name">— Katy D., Cornwall</span>
+          <span class="review-source"><svg class="fb-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true"><path d="M24 12.073C24 5.405 18.627 0 12 0S0 5.405 0 12.073C0 18.1 4.388 23.094 10.125 24v-8.437H7.078v-3.49h3.047V9.41c0-3.025 1.792-4.697 4.533-4.697 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.928-1.956 1.88v2.28h3.328l-.532 3.49h-2.796V24C19.612 23.094 24 18.1 24 12.073z"/></svg> Facebook Review</span>
+        </div>
+
+        <div class="review-card fade-up" data-delay="0.15">
+          <div class="stars" role="img" aria-label="5 out of 5 stars">
+            <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
+          </div>
+          <p>"Highly recommend Amar, Alex and Tristan!! AJC removals totally took the stress out of moving house. They were polite and respectful and made sure all the boxes ended up in the correct rooms. They even dismantled and reassembled my bed and set up an office in the new property. Thank you for a smooth and fun day!"</p>
+          <span class="review-name">— Bridge J., Cornwall</span>
+          <span class="review-source"><svg class="fb-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true"><path d="M24 12.073C24 5.405 18.627 0 12 0S0 5.405 0 12.073C0 18.1 4.388 23.094 10.125 24v-8.437H7.078v-3.49h3.047V9.41c0-3.025 1.792-4.697 4.533-4.697 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.928-1.956 1.88v2.28h3.328l-.532 3.49h-2.796V24C19.612 23.094 24 18.1 24 12.073z"/></svg> Facebook Review</span>
+        </div>
+
+        <div class="review-card fade-up" data-delay="0.3">
+          <div class="stars" role="img" aria-label="5 out of 5 stars">
+            <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
+          </div>
+          <p>"Absolutely brilliant service from start to finish. The team were punctual, professional, and took great care with all our furniture. Would highly recommend to anyone moving home."</p>
+          <span class="review-name">— Sarah M., Devon</span>
+          <span class="review-source"><svg class="fb-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true"><path d="M24 12.073C24 5.405 18.627 0 12 0S0 5.405 0 12.073C0 18.1 4.388 23.094 10.125 24v-8.437H7.078v-3.49h3.047V9.41c0-3.025 1.792-4.697 4.533-4.697 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.928-1.956 1.88v2.28h3.328l-.532 3.49h-2.796V24C19.612 23.094 24 18.1 24 12.073z"/></svg> Facebook Review</span>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
   <!-- SERVICES -->
   <section id="services">
     <div class="container">
-      <h2 class="section-heading fade-up">Our Services</h2>
+      <h2 class="section-heading fade-up">Removals &amp; Clearances Across Cornwall and Devon</h2>
       <span class="heading-rule fade-up" data-delay="0.1"></span>
       <div class="cards">
 
         <div class="card fade-up" data-delay="0.1">
           <div class="card-icon-wrap">
-            <svg class="card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <svg class="card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
               <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
               <polyline points="9 22 9 12 15 12 15 22"/>
             </svg>
           </div>
           <h3>House &amp; Business Removals</h3>
-          <p>Whether you're moving home or relocating your business, we handle everything with care and efficiency. Our team ensures your belongings arrive safely, on time, every time.</p>
+          <p>Moving home in Truro, Falmouth or Newquay, or relocating an office in Plymouth or Exeter — we handle it all with care. Packing, dismantling, reassembling at the other end. Your belongings arrive safely, on time, every time.</p>
         </div>
 
         <div class="card fade-up" data-delay="0.25">
           <div class="card-icon-wrap">
-            <svg class="card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <svg class="card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
               <polyline points="3 6 5 6 21 6"/>
               <path d="M19 6l-1 14H6L5 6"/>
               <path d="M10 11v6M14 11v6"/>
@@ -120,7 +174,7 @@
             </svg>
           </div>
           <h3>Property &amp; Site Clearances</h3>
-          <p>Fast, reliable clearance of houses, gardens, garages, and commercial sites. We dispose of waste responsibly and leave the property clean and ready for its next use.</p>
+          <p>House clearances, garden and garage clear-outs, and commercial site clearances anywhere in Cornwall or Devon. We're a licensed waste carrier, so everything is disposed of properly and the property is left clean and ready for its next use.</p>
         </div>
 
       </div>
@@ -198,58 +252,35 @@
       <span class="heading-rule fade-up" data-delay="0.1"></span>
       <div class="gallery-grid">
         <div class="gallery-item fade-up" data-delay="0">
-          <img src="images/gallery-2.jpg" alt="AJC Removals job photo" loading="lazy" />
+          <picture>
+            <source srcset="images/gallery-2.webp" type="image/webp" />
+            <img src="images/gallery-2.jpg" alt="Removal van loaded with bags and storage boxes, packed and strapped for a house move" loading="lazy" decoding="async" width="720" height="540" />
+          </picture>
         </div>
         <div class="gallery-item fade-up" data-delay="0.1">
-          <img src="images/gallery-3.jpg" alt="AJC Removals job photo" loading="lazy" />
+          <picture>
+            <source srcset="images/gallery-3.webp" type="image/webp" />
+            <img src="images/gallery-3.jpg" alt="Furniture wrapped in blankets inside an AJC Removals van" loading="lazy" decoding="async" width="720" height="540" />
+          </picture>
         </div>
         <div class="gallery-item fade-up" data-delay="0.2">
-          <img src="images/gallery-4.jpg" alt="AJC Removals job photo" loading="lazy" />
+          <picture>
+            <source srcset="images/gallery-4.webp" type="image/webp" />
+            <img src="images/gallery-4.jpg" alt="Moving boxes stacked and protected with removal blankets in the back of a van" loading="lazy" decoding="async" width="720" height="540" />
+          </picture>
         </div>
         <div class="gallery-item fade-up" data-delay="0.1">
-          <img src="images/gallery-5.jpg" alt="AJC Removals job photo" loading="lazy" />
+          <picture>
+            <source srcset="images/gallery-5.webp" type="image/webp" />
+            <img src="images/gallery-5.jpg" alt="A house move part-loaded, with boxes and furniture secured for transport" loading="lazy" decoding="async" width="720" height="540" />
+          </picture>
         </div>
         <div class="gallery-item fade-up" data-delay="0.2">
-          <img src="images/gallery-6.jpg" alt="AJC Removals job photo" loading="lazy" />
+          <picture>
+            <source srcset="images/gallery-6.webp" type="image/webp" />
+            <img src="images/gallery-6.jpg" alt="Household items loaded neatly for a removal job in Cornwall" loading="lazy" decoding="async" width="720" height="540" />
+          </picture>
         </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- TESTIMONIALS -->
-  <section id="reviews">
-    <div class="container">
-      <h2 class="section-heading fade-up">What Our Customers Say</h2>
-      <span class="heading-rule fade-up" data-delay="0.1"></span>
-      <div class="reviews-grid">
-
-        <div class="review-card fade-up" data-delay="0">
-          <div class="stars">
-            <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
-          </div>
-          <p>"I would highly recommend AJC removals. I found them to be polite, punctual and really helpful. They handled my delivery with care and consideration and there was great communication throughout. A job done swiftly for a fair price too. Thank you!"</p>
-          <span class="review-name">— Katy D., Cornwall</span>
-          <span class="review-source"><svg class="fb-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true"><path d="M24 12.073C24 5.405 18.627 0 12 0S0 5.405 0 12.073C0 18.1 4.388 23.094 10.125 24v-8.437H7.078v-3.49h3.047V9.41c0-3.025 1.792-4.697 4.533-4.697 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.928-1.956 1.88v2.28h3.328l-.532 3.49h-2.796V24C19.612 23.094 24 18.1 24 12.073z"/></svg> Facebook Review</span>
-        </div>
-
-        <div class="review-card fade-up" data-delay="0.15">
-          <div class="stars">
-            <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
-          </div>
-          <p>"Highly recommend Amar, Alex and Tristan!! AJC removals totally took the stress out of moving house. They were polite and respectful and made sure all the boxes ended up in the correct rooms. They even dismantled and reassembled my bed and set up an office in the new property. Thank you for a smooth and fun day!"</p>
-          <span class="review-name">— Bridge J., Cornwall</span>
-          <span class="review-source"><svg class="fb-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true"><path d="M24 12.073C24 5.405 18.627 0 12 0S0 5.405 0 12.073C0 18.1 4.388 23.094 10.125 24v-8.437H7.078v-3.49h3.047V9.41c0-3.025 1.792-4.697 4.533-4.697 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.928-1.956 1.88v2.28h3.328l-.532 3.49h-2.796V24C19.612 23.094 24 18.1 24 12.073z"/></svg> Facebook Review</span>
-        </div>
-
-        <div class="review-card fade-up" data-delay="0.3">
-          <div class="stars">
-            <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
-          </div>
-          <p>"Absolutely brilliant service from start to finish. The team were punctual, professional, and took great care with all our furniture. Would highly recommend to anyone moving home."</p>
-          <span class="review-name">— Sarah M., Devon</span>
-          <span class="review-source"><svg class="fb-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true"><path d="M24 12.073C24 5.405 18.627 0 12 0S0 5.405 0 12.073C0 18.1 4.388 23.094 10.125 24v-8.437H7.078v-3.49h3.047V9.41c0-3.025 1.792-4.697 4.533-4.697 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.928-1.956 1.88v2.28h3.328l-.532 3.49h-2.796V24C19.612 23.094 24 18.1 24 12.073z"/></svg> Facebook Review</span>
-        </div>
-
       </div>
     </div>
   </section>
@@ -259,14 +290,15 @@
     <div class="container">
       <div class="area-inner">
         <div class="area-text fade-up">
-          <h2 class="section-heading" style="text-align:left;">Service Area</h2>
+          <h2 class="section-heading" style="text-align:left;">Areas We Cover</h2>
           <span class="heading-rule left"></span>
-          <p>Based in Cornwall, AJC Removals &amp; Clearances proudly serves customers across Cornwall, Devon, and the surrounding regions. Whether you're moving locally or further afield, we're happy to travel to meet your needs.</p>
-          <p>Not sure if we cover your area? Give us a call and we'll do our best to help.</p>
+          <p>We're based in Cornwall and cover the whole county — from Penzance and Camborne in the west, through Truro, Falmouth and Redruth, up to Newquay, St Austell and Bodmin.</p>
+          <p>Devon is a regular run for us too. Plymouth, Exeter, Torquay and Barnstaple are all well within reach, and we'll travel further afield for the right job.</p>
+          <p>Not sure if we cover your area? Give us a call and we'll tell you straight.</p>
           <a href="#contact" class="btn">Get in Touch</a>
         </div>
         <div class="area-towns fade-up" data-delay="0.2">
-          <h3>Areas We Cover</h3>
+          <h3>Cornwall</h3>
           <ul>
             <li>Truro</li>
             <li>Falmouth</li>
@@ -276,6 +308,9 @@
             <li>Penzance</li>
             <li>Redruth</li>
             <li>Camborne</li>
+          </ul>
+          <h3 class="area-towns-second">Devon</h3>
+          <ul>
             <li>Plymouth</li>
             <li>Exeter</li>
             <li>Torquay</li>
@@ -293,18 +328,23 @@
       <span class="heading-rule fade-up" data-delay="0.1"></span>
       <div class="contact-body fade-up" data-delay="0.2">
         <p class="contact-intro">Ready to book or get a free quote?</p>
-        <a href="tel:07946672803" class="contact-phone">07946 672 803</a>
+        <a href="tel:+447946672803" class="contact-phone">07946 672 803</a>
         <a href="mailto:ajcremovalsclearance@gmail.com" class="contact-email">ajcremovalsclearance@gmail.com</a>
         <div class="contact-meta">
           <div>Mon – Sat: 7:00am – 7:00pm &nbsp;|&nbsp; Sun: 8:00am – 4:00pm</div>
           <div>Based in Cornwall, UK</div>
         </div>
-        <form class="contact-form" name="contact" netlify>
+        <form class="contact-form" name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+          <input type="hidden" name="form-name" value="contact" />
+          <p class="hp-field"><label>Leave this empty: <input name="bot-field" tabindex="-1" autocomplete="off" /></label></p>
           <div class="form-row">
-            <input type="text" name="name" placeholder="Your name" required />
-            <input type="tel" name="phone" placeholder="Your phone number" />
+            <label class="sr-only" for="cf-name">Your name</label>
+            <input id="cf-name" type="text" name="name" placeholder="Your name" autocomplete="name" required />
+            <label class="sr-only" for="cf-phone">Your phone number</label>
+            <input id="cf-phone" type="tel" name="phone" placeholder="Your phone number" autocomplete="tel" />
           </div>
-          <textarea name="message" placeholder="Tell us what you need..." rows="4" required></textarea>
+          <label class="sr-only" for="cf-message">Tell us what you need</label>
+          <textarea id="cf-message" name="message" placeholder="Tell us what you need..." rows="4" required></textarea>
           <button type="submit" class="btn btn-white">Send Enquiry</button>
         </form>
       </div>
@@ -316,25 +356,28 @@
     <div class="footer-grid">
       <div class="footer-col">
         <div class="footer-brand">
-          <img src="images/AJC Logo@2x.png" alt="AJC Removals &amp; Clearances" />
+          <picture>
+            <source srcset="images/logo-320.webp" type="image/webp" />
+            <img src="images/logo-320.png" alt="AJC Removals &amp; Clearances" width="320" height="320" loading="lazy" />
+          </picture>
         </div>
         <p>Professional removals and clearance services across Cornwall, Devon and the surrounding regions. Fully insured and a licensed waste carrier.</p>
       </div>
       <div class="footer-col">
         <h4>Quick Links</h4>
         <ul>
+          <li><a href="#reviews">Reviews</a></li>
           <li><a href="#services">Services</a></li>
           <li><a href="#how-it-works">How It Works</a></li>
           <li><a href="#gallery">Our Work</a></li>
-          <li><a href="#reviews">Reviews</a></li>
-          <li><a href="#area">Service Area</a></li>
+          <li><a href="#area">Areas We Cover</a></li>
           <li><a href="#contact">Contact</a></li>
         </ul>
       </div>
       <div class="footer-col">
         <h4>Contact Us</h4>
         <address>
-          <a href="tel:07946672803">07946 672 803</a><br />
+          <a href="tel:+447946672803">07946 672 803</a><br />
           <a href="mailto:ajcremovalsclearance@gmail.com">ajcremovalsclearance@gmail.com</a><br /><br />
           Mon – Sat: 7:00am – 7:00pm<br />
           Sun: 8:00am – 4:00pm<br />
@@ -348,24 +391,62 @@
     </div>
   </footer>
 
+  <!-- STICKY CALL BAR — mobile, follows the user down the page -->
+  <a href="tel:+447946672803" class="sticky-call" id="stickyCall">
+    <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20" aria-hidden="true"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+    <span>Call 07946 672 803</span>
+  </a>
+
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "MovingCompany",
+    "@id": "https://ajcremovals.co.uk/#business",
     "name": "AJC Removals & Clearances",
-    "telephone": "07769316752",
+    "url": "https://ajcremovals.co.uk/",
+    "image": "https://ajcremovals.co.uk/images/og-image.jpg",
+    "logo": "https://ajcremovals.co.uk/images/logo-320.png",
+    "telephone": "+447946672803",
     "email": "ajcremovalsclearance@gmail.com",
     "address": {
       "@type": "PostalAddress",
       "addressRegion": "Cornwall",
       "addressCountry": "GB"
     },
-    "areaServed": ["Cornwall", "Devon", "Plymouth", "Exeter"],
-    "openingHours": ["Mo-Sa 07:00-19:00", "Su 08:00-16:00"],
+    "areaServed": [
+      { "@type": "AdministrativeArea", "name": "Cornwall" },
+      { "@type": "AdministrativeArea", "name": "Devon" },
+      { "@type": "City", "name": "Truro" },
+      { "@type": "City", "name": "Falmouth" },
+      { "@type": "City", "name": "Bodmin" },
+      { "@type": "City", "name": "Newquay" },
+      { "@type": "City", "name": "St Austell" },
+      { "@type": "City", "name": "Penzance" },
+      { "@type": "City", "name": "Redruth" },
+      { "@type": "City", "name": "Camborne" },
+      { "@type": "City", "name": "Plymouth" },
+      { "@type": "City", "name": "Exeter" },
+      { "@type": "City", "name": "Torquay" },
+      { "@type": "City", "name": "Barnstaple" }
+    ],
+    "hasOfferCatalog": {
+      "@type": "OfferCatalog",
+      "name": "Removals & Clearance Services",
+      "itemListElement": [
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "House Removals" } },
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Business & Office Removals" } },
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "House & Property Clearances" } },
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Garden, Garage & Site Clearances" } }
+      ]
+    },
+    "openingHoursSpecification": [
+      { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"], "opens": "07:00", "closes": "19:00" },
+      { "@type": "OpeningHoursSpecification", "dayOfWeek": "Sunday", "opens": "08:00", "closes": "16:00" }
+    ],
     "priceRange": "££",
     "description": "Professional removals and clearance services across Cornwall, Devon and beyond. Fully insured and licensed waste carrier."
   }
   </script>
-  <script src="js/main.js"></script>
+  <script src="js/main.js" defer></script>
 </body>
 </html>
