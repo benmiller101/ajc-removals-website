@@ -77,12 +77,14 @@
       </div>
     </div>
 
-    <!-- Right panel. The van photo is a CSS background, so it is the only image
-         phones ever download here. The video is injected by JS on desktop only. -->
+    <!-- Right panel. The van-1 photo is a CSS background and is the hero visual
+         on every device. The <video> stays wired up for a future videos/hero.mp4:
+         until that file exists nothing loads and the photo is what shows. The
+         Pexels fallback was removed — it covered the real branded van with a
+         generic stock clip on desktop. -->
     <div class="hero-right">
       <video class="hero-video" id="heroVideo" muted playsinline loop preload="none" aria-hidden="true" tabindex="-1"
-             data-src="videos/hero.mp4"
-             data-fallback="https://www.pexels.com/download/video/5044420/"></video>
+             data-src="videos/hero.mp4"></video>
     </div>
   </section>
 
@@ -119,8 +121,8 @@
           <div class="stars" role="img" aria-label="5 out of 5 stars">
             <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
           </div>
-          <p>"I would highly recommend AJC removals. I found them to be polite, punctual and really helpful. They handled my delivery with care and consideration and there was great communication throughout. A job done swiftly for a fair price too. Thank you!"</p>
-          <span class="review-name">— Katy D., Cornwall</span>
+          <p>"Amazing job, well done. From phone call to end of job. Great communication, polite, careful and organised. Nothing too much trouble. Highly recommend. Made a stressful day so much easier. Worth every penny, plus an excellent price. Would never use anyone else. Thanks guys x"</p>
+          <span class="review-name">— Linda B., Cornwall</span>
           <span class="review-source"><svg class="fb-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true"><path d="M24 12.073C24 5.405 18.627 0 12 0S0 5.405 0 12.073C0 18.1 4.388 23.094 10.125 24v-8.437H7.078v-3.49h3.047V9.41c0-3.025 1.792-4.697 4.533-4.697 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.928-1.956 1.88v2.28h3.328l-.532 3.49h-2.796V24C19.612 23.094 24 18.1 24 12.073z"/></svg> Facebook Review</span>
         </div>
 
@@ -137,8 +139,62 @@
           <div class="stars" role="img" aria-label="5 out of 5 stars">
             <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
           </div>
-          <p>"Absolutely brilliant service from start to finish. The team were punctual, professional, and took great care with all our furniture. Would highly recommend to anyone moving home."</p>
-          <span class="review-name">— Sarah M., Devon</span>
+          <p>"This bloke is great. I messaged him and he said the next time they are doing a scrap run he would message me. He messaged me the night before and came when he said he would. Really nice bloke and took what I needed him to. I will defo be recommending him to everyone I know. 100% will be using him again."</p>
+          <span class="review-name">— Eve A., Cornwall</span>
+          <span class="review-source"><svg class="fb-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true"><path d="M24 12.073C24 5.405 18.627 0 12 0S0 5.405 0 12.073C0 18.1 4.388 23.094 10.125 24v-8.437H7.078v-3.49h3.047V9.41c0-3.025 1.792-4.697 4.533-4.697 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.928-1.956 1.88v2.28h3.328l-.532 3.49h-2.796V24C19.612 23.094 24 18.1 24 12.073z"/></svg> Facebook Review</span>
+        </div>
+
+        <div class="review-card fade-up" data-delay="0">
+          <div class="stars" role="img" aria-label="5 out of 5 stars">
+            <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
+          </div>
+          <p>"Amazing guys! Super friendly &amp; polite and nothing was too much trouble. Great with my chatty, inquisitive children too. Made the whole house moving process 100x easier! Everything was kept safe and moved with care. Would definitely recommend if you are moving house, clearance etc."</p>
+          <span class="review-name">— Laura H., Cornwall</span>
+          <span class="review-source"><svg class="fb-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true"><path d="M24 12.073C24 5.405 18.627 0 12 0S0 5.405 0 12.073C0 18.1 4.388 23.094 10.125 24v-8.437H7.078v-3.49h3.047V9.41c0-3.025 1.792-4.697 4.533-4.697 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.928-1.956 1.88v2.28h3.328l-.532 3.49h-2.796V24C19.612 23.094 24 18.1 24 12.073z"/></svg> Facebook Review</span>
+        </div>
+
+        <div class="review-card fade-up" data-delay="0.15">
+          <div class="stars" role="img" aria-label="5 out of 5 stars">
+            <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
+          </div>
+          <p>"What a pleasure it was to have these guys move Raw4pawz to our new location near St Agnes. So professional, respectful and just utterly lovely guys. Would highly recommend AJC Removals &amp; Clearance — I guarantee you will not be disappointed with their service."</p>
+          <span class="review-name">— Cazza P., St Agnes</span>
+          <span class="review-source"><svg class="fb-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true"><path d="M24 12.073C24 5.405 18.627 0 12 0S0 5.405 0 12.073C0 18.1 4.388 23.094 10.125 24v-8.437H7.078v-3.49h3.047V9.41c0-3.025 1.792-4.697 4.533-4.697 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.928-1.956 1.88v2.28h3.328l-.532 3.49h-2.796V24C19.612 23.094 24 18.1 24 12.073z"/></svg> Facebook Review</span>
+        </div>
+
+        <div class="review-card fade-up" data-delay="0.3">
+          <div class="stars" role="img" aria-label="5 out of 5 stars">
+            <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
+          </div>
+          <p>"I would highly recommend AJC removals. I found them to be polite, punctual and really helpful. They handled my delivery with care and consideration and there was great communication throughout. A job done swiftly for a fair price too. Thank you!"</p>
+          <span class="review-name">— Katy D., Cornwall</span>
+          <span class="review-source"><svg class="fb-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true"><path d="M24 12.073C24 5.405 18.627 0 12 0S0 5.405 0 12.073C0 18.1 4.388 23.094 10.125 24v-8.437H7.078v-3.49h3.047V9.41c0-3.025 1.792-4.697 4.533-4.697 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.928-1.956 1.88v2.28h3.328l-.532 3.49h-2.796V24C19.612 23.094 24 18.1 24 12.073z"/></svg> Facebook Review</span>
+        </div>
+
+        <div class="review-card fade-up" data-delay="0">
+          <div class="stars" role="img" aria-label="5 out of 5 stars">
+            <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
+          </div>
+          <p>"Such a great service. Very quick, efficient and done with great care. Can not recommend enough. Thank you guys, amazing job."</p>
+          <span class="review-name">— Raw4pawz, St Agnes</span>
+          <span class="review-source"><svg class="fb-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true"><path d="M24 12.073C24 5.405 18.627 0 12 0S0 5.405 0 12.073C0 18.1 4.388 23.094 10.125 24v-8.437H7.078v-3.49h3.047V9.41c0-3.025 1.792-4.697 4.533-4.697 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.928-1.956 1.88v2.28h3.328l-.532 3.49h-2.796V24C19.612 23.094 24 18.1 24 12.073z"/></svg> Facebook Review</span>
+        </div>
+
+        <div class="review-card fade-up" data-delay="0.15">
+          <div class="stars" role="img" aria-label="5 out of 5 stars">
+            <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
+          </div>
+          <p>"Definitely recommend AJC Removals &amp; Clearance. I used this company for scrap metal collection. They were very friendly when booking and are very quick and reliable. Thank you again."</p>
+          <span class="review-name">— Laura W., Cornwall</span>
+          <span class="review-source"><svg class="fb-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true"><path d="M24 12.073C24 5.405 18.627 0 12 0S0 5.405 0 12.073C0 18.1 4.388 23.094 10.125 24v-8.437H7.078v-3.49h3.047V9.41c0-3.025 1.792-4.697 4.533-4.697 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.928-1.956 1.88v2.28h3.328l-.532 3.49h-2.796V24C19.612 23.094 24 18.1 24 12.073z"/></svg> Facebook Review</span>
+        </div>
+
+        <div class="review-card fade-up" data-delay="0.3">
+          <div class="stars" role="img" aria-label="5 out of 5 stars">
+            <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
+          </div>
+          <p>"Excellent service, friendly and very quick to help. Will definitely be using again."</p>
+          <span class="review-name">— Jade R., Cornwall</span>
           <span class="review-source"><svg class="fb-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true"><path d="M24 12.073C24 5.405 18.627 0 12 0S0 5.405 0 12.073C0 18.1 4.388 23.094 10.125 24v-8.437H7.078v-3.49h3.047V9.41c0-3.025 1.792-4.697 4.533-4.697 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.928-1.956 1.88v2.28h3.328l-.532 3.49h-2.796V24C19.612 23.094 24 18.1 24 12.073z"/></svg> Facebook Review</span>
         </div>
 
@@ -154,6 +210,12 @@
       <div class="cards">
 
         <div class="card fade-up" data-delay="0.1">
+          <div class="card-photo">
+            <picture>
+              <source srcset="images/service-removals.webp" type="image/webp" />
+              <img src="images/service-removals.jpg" alt="AJC Removals van parked on the driveway of a house in Cornwall on moving day" loading="lazy" decoding="async" width="720" height="540" />
+            </picture>
+          </div>
           <div class="card-icon-wrap">
             <svg class="card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
               <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
@@ -165,6 +227,12 @@
         </div>
 
         <div class="card fade-up" data-delay="0.25">
+          <div class="card-photo">
+            <picture>
+              <source srcset="images/service-clearance.webp" type="image/webp" />
+              <img src="images/service-clearance.jpg" alt="AJC Removals van being loaded with furniture and bagged waste during a property clearance" loading="lazy" decoding="async" width="720" height="540" />
+            </picture>
+          </div>
           <div class="card-icon-wrap">
             <svg class="card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
               <polyline points="3 6 5 6 21 6"/>
@@ -253,17 +321,41 @@
       <div class="gallery-grid">
         <div class="gallery-item fade-up" data-delay="0">
           <picture>
+            <source srcset="images/gallery-7.webp" type="image/webp" />
+            <img src="images/gallery-7.jpg" alt="Two branded AJC Removals Luton vans parked outside a terraced house in Cornwall" loading="lazy" decoding="async" width="720" height="540" />
+          </picture>
+        </div>
+        <div class="gallery-item fade-up" data-delay="0.1">
+          <picture>
+            <source srcset="images/gallery-8.webp" type="image/webp" />
+            <img src="images/gallery-8.jpg" alt="AJC Removals van with its doors open outside a block of flats during a move" loading="lazy" decoding="async" width="720" height="540" />
+          </picture>
+        </div>
+        <div class="gallery-item fade-up" data-delay="0.2">
+          <picture>
+            <source srcset="images/gallery-9.webp" type="image/webp" />
+            <img src="images/gallery-9.jpg" alt="An AJC Removals team member loading a mattress and furniture into the van" loading="lazy" decoding="async" width="720" height="540" />
+          </picture>
+        </div>
+        <div class="gallery-item fade-up" data-delay="0">
+          <picture>
             <source srcset="images/gallery-2.webp" type="image/webp" />
             <img src="images/gallery-2.jpg" alt="Removal van loaded with bags and storage boxes, packed and strapped for a house move" loading="lazy" decoding="async" width="720" height="540" />
           </picture>
         </div>
         <div class="gallery-item fade-up" data-delay="0.1">
           <picture>
-            <source srcset="images/gallery-3.webp" type="image/webp" />
-            <img src="images/gallery-3.jpg" alt="Furniture wrapped in blankets inside an AJC Removals van" loading="lazy" decoding="async" width="720" height="540" />
+            <source srcset="images/gallery-10.webp" type="image/webp" />
+            <img src="images/gallery-10.jpg" alt="A wall of labelled moving boxes and suitcases stacked neatly inside the van" loading="lazy" decoding="async" width="720" height="540" />
           </picture>
         </div>
         <div class="gallery-item fade-up" data-delay="0.2">
+          <picture>
+            <source srcset="images/gallery-11.webp" type="image/webp" />
+            <img src="images/gallery-11.jpg" alt="Rear doors open on a part-loaded AJC Removals van at a house move in Cornwall" loading="lazy" decoding="async" width="720" height="540" />
+          </picture>
+        </div>
+        <div class="gallery-item fade-up" data-delay="0">
           <picture>
             <source srcset="images/gallery-4.webp" type="image/webp" />
             <img src="images/gallery-4.jpg" alt="Moving boxes stacked and protected with removal blankets in the back of a van" loading="lazy" decoding="async" width="720" height="540" />
@@ -271,8 +363,8 @@
         </div>
         <div class="gallery-item fade-up" data-delay="0.1">
           <picture>
-            <source srcset="images/gallery-5.webp" type="image/webp" />
-            <img src="images/gallery-5.jpg" alt="A house move part-loaded, with boxes and furniture secured for transport" loading="lazy" decoding="async" width="720" height="540" />
+            <source srcset="images/gallery-12.webp" type="image/webp" />
+            <img src="images/gallery-12.jpg" alt="Furniture wrapped in removal blankets and strapped securely inside the van" loading="lazy" decoding="async" width="720" height="540" />
           </picture>
         </div>
         <div class="gallery-item fade-up" data-delay="0.2">
@@ -442,6 +534,112 @@
     "openingHoursSpecification": [
       { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"], "opens": "07:00", "closes": "19:00" },
       { "@type": "OpeningHoursSpecification", "dayOfWeek": "Sunday", "opens": "08:00", "closes": "16:00" }
+    ],
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "5",
+      "reviewCount": "9",
+      "bestRating": "5"
+    },
+    "review": [
+      {
+        "@type": "Review",
+        "author": {
+          "@type": "Person",
+          "name": "Linda B."
+        },
+        "datePublished": "2025-06-30",
+        "reviewRating": {
+          "@type": "Rating",
+          "ratingValue": "5",
+          "bestRating": "5"
+        },
+        "reviewBody": "Amazing job, well done. From phone call to end of job. Great communication, polite, careful and organised. Nothing too much trouble. Highly recommend. Made a stressful day so much easier. Worth every penny, plus an excellent price. Would never use anyone else."
+      },
+      {
+        "@type": "Review",
+        "author": {
+          "@type": "Person",
+          "name": "Laura H."
+        },
+        "datePublished": "2025-07-01",
+        "reviewRating": {
+          "@type": "Rating",
+          "ratingValue": "5",
+          "bestRating": "5"
+        },
+        "reviewBody": "Amazing guys! Super friendly & polite and nothing was too much trouble. Made the whole house moving process 100x easier! Everything was kept safe and moved with care. Would definitely recommend if you are moving house, clearance etc."
+      },
+      {
+        "@type": "Review",
+        "author": {
+          "@type": "Person",
+          "name": "Cazza P."
+        },
+        "datePublished": "2025-07-01",
+        "reviewRating": {
+          "@type": "Rating",
+          "ratingValue": "5",
+          "bestRating": "5"
+        },
+        "reviewBody": "What a pleasure it was to have these guys move Raw4pawz to our new location near St Agnes. So professional, respectful and just utterly lovely guys. Would highly recommend AJC Removals & Clearance."
+      },
+      {
+        "@type": "Review",
+        "author": {
+          "@type": "Person",
+          "name": "Raw4pawz"
+        },
+        "datePublished": "2025-07-01",
+        "reviewRating": {
+          "@type": "Rating",
+          "ratingValue": "5",
+          "bestRating": "5"
+        },
+        "reviewBody": "Such a great service. Very quick, efficient and done with great care. Can not recommend enough. Thank you guys, amazing job."
+      },
+      {
+        "@type": "Review",
+        "author": {
+          "@type": "Person",
+          "name": "Jade R."
+        },
+        "datePublished": "2025-06-25",
+        "reviewRating": {
+          "@type": "Rating",
+          "ratingValue": "5",
+          "bestRating": "5"
+        },
+        "reviewBody": "Excellent service, friendly and very quick to help. Will definitely be using again."
+      },
+      {
+        "@type": "Review",
+        "author": {
+          "@type": "Person",
+          "name": "Eve A."
+        },
+        "datePublished": "2025-06-26",
+        "reviewRating": {
+          "@type": "Rating",
+          "ratingValue": "5",
+          "bestRating": "5"
+        },
+        "reviewBody": "This bloke is great. He messaged me the night before and came when he said he would. Really nice bloke and took what I needed him to. 100% will be using him again."
+      },
+      {
+        "@type": "Review",
+        "author": {
+          "@type": "Person",
+          "name": "Laura W."
+        },
+        "datePublished": "2025-06-26",
+        "reviewRating": {
+          "@type": "Rating",
+          "ratingValue": "5",
+          "bestRating": "5"
+        },
+        "reviewBody": "Definitely recommend AJC Removals & Clearance. They were very friendly when booking and are very quick and reliable. Thank you again."
+      }
     ],
     "priceRange": "££",
     "description": "Professional removals and clearance services across Cornwall, Devon and beyond. Fully insured and licensed waste carrier."
