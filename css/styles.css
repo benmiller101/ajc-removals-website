@@ -109,7 +109,7 @@ nav {
 .nav-links a:hover { color: #ffffff; }
 .nav-links a:hover::after { width: 100%; }
 
-/* Desktop: call button lives in the nav, so it is on screen at all times. */
+/* Call button lives in the nav at every width, so it is on screen at all times. */
 .nav-call {
   display: inline-flex;
   align-items: center;
@@ -1112,10 +1112,20 @@ footer {
 @media (max-width: 768px) {
   :root { --diag: 30px; }
 
-  nav { padding: 0 24px; }
+  nav { padding: 0 18px; gap: 12px; }
   .nav-links { display: none; }
-  .nav-call { display: none; }   /* the sticky bottom bar covers this on mobile */
   .hamburger { display: flex; }
+
+  /* Mobile: the call button stays in the bar, outside the hamburger menu,
+     so the number is on screen the whole time. */
+  .nav-call {
+    display: inline-flex;
+    margin-left: auto;
+    font-size: 0.8rem;
+    letter-spacing: 0.02em;
+    padding: 9px 14px;
+    gap: 6px;
+  }
 
   .sticky-call { display: flex; }
 
@@ -1285,6 +1295,10 @@ footer {
 @media (max-width: 480px) {
   .trust-bar-inner { gap: 14px 24px; }
   .trust-item { font-size: 0.82rem; }
+
+  nav { padding: 0 14px; gap: 10px; }
+  .nav-call { font-size: 0.75rem; padding: 8px 11px; gap: 5px; }
+  .nav-call svg { width: 14px; height: 14px; }
 }
 
 /* ── REDUCED MOTION ── */
