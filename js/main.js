@@ -91,6 +91,123 @@ if (stickyCall && hero) {
   }, { threshold: 0, rootMargin: '-80px 0px 0px 0px' }).observe(hero);
 }
 
+// ── Reviews carousel ──
+// The track scrolls natively (swipe, trackpad, keyboard), with snap points
+// set in CSS. The arrows and dots just move it a page at a time.
+const reviewsTrack = document.getElementById('reviewsTrack');
+
+if (reviewsTrack) {
+  const carousel = reviewsTrack.closest('.reviews-carousel');
+  const cards = Array.from(reviewsTrack.querySelectorAll('.review-card'));
+  const prevBtn = carousel.querySelector('.carousel-prev');
+  const nextBtn = carousel.querySelector('.carousel-next');
+  const dotsWrap = document.getElementById('reviewsDots');
+  let perView = 1;
+  let pageCount = 1;
+
+  // Long reviews get cut to a few lines with a Read more toggle, so one
+  // essay-length review doesn't stretch every card in the row.
+  cards.forEach(card => {
+    const text = card.querySelector('p');
+    text.classList.add('clamped');
+    const btn = document.createElement('button');
+    btn.type = 'button';
+    btn.className = 'read-more';
+    btn.textContent = 'Read more';
+    btn.setAttribute('aria-expanded', 'false');
+    btn.addEventListener('click', () => {
+      const open = text.classList.toggle('clamped') === false;
+      btn.textContent = open ? 'Show less' : 'Read more';
+      btn.setAttribute('aria-expanded', String(open));
+    });
+    text.after(btn);
+  });
+
+  function updateReadMore() {
+    cards.forEach(card => {
+      const text = card.querySelector('p');
+      const btn = card.querySelector('.read-more');
+      if (!text.classList.contains('clamped')) return;
+      btn.hidden = text.scrollHeight <= text.clientHeight + 1;
+    });
+  }
+
+  function cardStep() {
+    return cards.length > 1 ? cards[1].offsetLeft - cards[0].offsetLeft : reviewsTrack.clientWidth;
+  }
+
+  function scrollToPage(page) {
+    const index = Math.min(page * perView, cards.length - perView);
+    reviewsTrack.scrollLeft = cards[Math.max(0, index)].offsetLeft - cards[0].offsetLeft;
+  }
+
+  function currentPage() {
+    const maxScroll = reviewsTrack.scrollWidth - reviewsTrack.clientWidth;
+    if (reviewsTrack.scrollLeft >= maxScroll - 2) return pageCount - 1;
+    return Math.round(reviewsTrack.scrollLeft / cardStep() / perView);
+  }
+
+  function updateControls() {
+    const page = currentPage();
+    const maxScroll = reviewsTrack.scrollWidth - reviewsTrack.clientWidth;
+    prevBtn.disabled = reviewsTrack.scrollLeft <= 2;
+    nextBtn.disabled = reviewsTrack.scrollLeft >= maxScroll - 2;
+    dotsWrap.querySelectorAll('.carousel-dot').forEach((dot, i) => {
+      dot.setAttribute('aria-current', String(i === page));
+    });
+    const count = dotsWrap.querySelector('.carousel-count');
+    if (count) count.textContent = `${page + 1} / ${pageCount}`;
+  }
+
+  function buildDots() {
+    // Content width excludes the track's padding (there for hover shadows);
+    // add one gap since the last visible card has none after it.
+    const style = getComputedStyle(reviewsTrack);
+    const inner = reviewsTrack.clientWidth - parseFloat(style.paddingLeft) - parseFloat(style.paddingRight);
+    const gap = parseFloat(style.columnGap) || 0;
+    perView = Math.max(1, Math.floor((inner + gap + 2) / cardStep()));
+    pageCount = Math.ceil(cards.length / perView);
+    dotsWrap.replaceChildren();
+    // On phones that's one page per review — too many dots, so show a count
+    if (pageCount > 8) {
+      const count = document.createElement('span');
+      count.className = 'carousel-count';
+      dotsWrap.appendChild(count);
+      updateControls();
+      return;
+    }
+    for (let i = 0; i < pageCount; i++) {
+      const dot = document.createElement('button');
+      dot.type = 'button';
+      dot.className = 'carousel-dot';
+      dot.setAttribute('aria-label', `Show reviews page ${i + 1} of ${pageCount}`);
+      dot.addEventListener('click', () => scrollToPage(i));
+      dotsWrap.appendChild(dot);
+    }
+    updateControls();
+  }
+
+  prevBtn.addEventListener('click', () => scrollToPage(Math.max(0, currentPage() - 1)));
+  nextBtn.addEventListener('click', () => scrollToPage(Math.min(pageCount - 1, currentPage() + 1)));
+
+  let scrollFrame;
+  reviewsTrack.addEventListener('scroll', () => {
+    cancelAnimationFrame(scrollFrame);
+    scrollFrame = requestAnimationFrame(updateControls);
+  }, { passive: true });
+
+  let resizeTimer;
+  window.addEventListener('resize', () => {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(() => { buildDots(); updateReadMore(); }, 150);
+  });
+
+  buildDots();
+  updateReadMore();
+  // Webfont swap can change line counts
+  if (document.fonts) document.fonts.ready.then(updateReadMore);
+}
+
 // ── Scroll animations ──
 const fadeObserver = new IntersectionObserver((entries) => {
   entries.forEach(entry => {

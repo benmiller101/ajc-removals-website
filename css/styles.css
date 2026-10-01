@@ -673,12 +673,135 @@ nav {
   z-index: 8;
 }
 
-.reviews-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 28px;
+/* One row of cards that scrolls sideways — swipe on touch, arrows on desktop.
+   Arrows and dots are wired up in main.js. */
+.reviews-carousel {
+  --gap: 28px;
+  --per-view: 3;
+  position: relative;
   max-width: 1000px;
   margin: 0 auto;
+}
+
+.reviews-track {
+  display: flex;
+  gap: var(--gap);
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  overscroll-behavior-x: contain;
+  scrollbar-width: none;
+  /* room for the card hover lift and shadow, which overflow would clip */
+  padding: 12px 4px 20px;
+  margin: -12px -4px 0;
+  scroll-padding-inline: 4px;
+}
+
+.reviews-track::-webkit-scrollbar { display: none; }
+
+.reviews-track:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 4px;
+}
+
+.reviews-track .review-card {
+  flex: 0 0 calc((100% - (var(--per-view) - 1) * var(--gap)) / var(--per-view));
+  scroll-snap-align: start;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.carousel-btn {
+  position: absolute;
+  top: calc(50% - 24px);
+  transform: translateY(-50%);
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: none;
+  background: var(--bg-white);
+  color: var(--accent);
+  font-size: 1.9rem;
+  line-height: 1;
+  padding-bottom: 4px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.12);
+  cursor: pointer;
+  z-index: 2;
+  transition: background 0.2s ease, color 0.2s ease, opacity 0.2s ease;
+}
+
+.carousel-prev { left: -64px; }
+.carousel-next { right: -64px; }
+
+.carousel-btn:hover:not(:disabled) {
+  background: var(--accent);
+  color: #fff;
+}
+
+.carousel-btn:disabled {
+  opacity: 0.35;
+  cursor: default;
+}
+
+/* Not enough side room to hang the arrows outside the cards */
+@media (max-width: 1160px) {
+  .carousel-prev { left: -14px; }
+  .carousel-next { right: -14px; }
+}
+
+@media (max-width: 1100px) {
+  .reviews-carousel { --per-view: 2; }
+}
+
+/* Phones: one card with the next one peeking in, so it reads as swipeable.
+   The arrows go; the dots stay as a position marker. */
+@media (max-width: 768px) {
+  .reviews-carousel { --per-view: 1.15; --gap: 16px; }
+  .carousel-btn { display: none; }
+}
+
+/* Used instead of dots when there are too many pages to show */
+.carousel-count {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  letter-spacing: 0.05em;
+  padding: 4px 0;
+}
+
+.carousel-dots {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 4px;
+  margin-top: 12px;
+}
+
+/* 24px hit area around an 10px visible dot */
+.carousel-dot {
+  width: 24px;
+  height: 24px;
+  border: none;
+  background: none;
+  padding: 0;
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+}
+
+.carousel-dot::before {
+  content: '';
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #cfcfcf;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.carousel-dot[aria-current="true"]::before {
+  background: var(--accent);
+  transform: scale(1.25);
 }
 
 .review-card {
@@ -742,6 +865,34 @@ nav {
   font-weight: 400;
 }
 
+/* Long reviews are cut to a few lines; main.js adds a Read more toggle
+   only where the text actually overflows. */
+.review-card p.clamped {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 7;
+  line-clamp: 7;
+  overflow: hidden;
+  margin-bottom: 8px;
+}
+
+.read-more {
+  background: none;
+  border: none;
+  padding: 4px 8px;
+  margin-bottom: 14px;
+  font: inherit;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--accent);
+  cursor: pointer;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+/* name and source sit at the bottom so they line up across a row */
+.reviews-track .review-name { margin-top: auto; }
+
 .review-name {
   font-weight: 600;
   font-size: 0.87rem;
@@ -764,6 +915,12 @@ nav {
   width: 14px;
   height: 14px;
   fill: #1877F2;
+  flex-shrink: 0;
+}
+
+.g-icon {
+  width: 14px;
+  height: 14px;
   flex-shrink: 0;
 }
 
@@ -1310,6 +1467,7 @@ footer {
   }
 
   .fade-up { opacity: 1; transform: none; }
+  .reviews-track { scroll-behavior: auto; }
   .step { opacity: 1; transform: none; }
   .step-connector { transform: scaleX(1); }
   .step-connector::after { opacity: 1; }
